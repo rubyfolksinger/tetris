@@ -7,23 +7,33 @@ describe 'Tetris::Tetrimino' do
   
   describe 'attributes' do
     before do
-      @height    = 2
-      @width     = 3
-      @shape     = [0,1,0,
-                    1,1,1]
-      @tetrimino = Tetris::Tetrimino.new( @height, @width, @shape )
+      @attributes = {
+        :height    => 2,
+        :width     => 3,
+        :shape     => [0,1,0,
+                       1,1,1]
+      }
+      @tetrimino = Tetris::Tetrimino.new( @attributes )
     end
 
     it 'should have a height' do
-      @tetrimino.height.should == @height
+      @tetrimino.height.should == @attributes[:height]
     end
 
     it 'should have a width' do
-      @tetrimino.width.should == @width
+      @tetrimino.width.should == @attributes[:width]
     end
 
     it 'should have a shape' do
-      @tetrimino.shape.should == @shape
+      @tetrimino.shape.should == @attributes[:shape]
+    end
+  end
+
+  describe 'class methods' do
+    describe '#sample' do
+      it 'should return a random Tetrimino piece' do
+        Tetris::Tetrimino.sample.class == Tetris::Tetrimino
+      end
     end
   end
 end
