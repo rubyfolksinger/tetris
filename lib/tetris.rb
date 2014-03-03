@@ -1,5 +1,5 @@
 require "tetris/version"
+require "tetris/game"
 
 module Tetris
-  # Your code goes here...
 end
