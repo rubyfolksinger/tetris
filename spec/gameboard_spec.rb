@@ -7,15 +7,21 @@ describe 'Tetris::Gameboard' do
   
   describe 'attributes' do
     before do
-      @gameboard = Tetris::Gameboard.new(12, 6)
+      @height    = 12
+      @width     = 6
+      @gameboard = Tetris::Gameboard.new( @height, @width )
     end
 
     it 'should have a height' do
-      @gameboard.height.should == 12
+      @gameboard.height.should == @height
     end
 
     it 'should have a width' do
-      @gameboard.width.should == 6
+      @gameboard.width.should == @width
+    end
+
+    it 'should have a well (game grid)' do
+      @gameboard.well.size.should == @height * @width
     end
   end
 end
