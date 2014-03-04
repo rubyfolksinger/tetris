@@ -1,4 +1,4 @@
-require 'spec_helper'
+  require 'spec_helper'
 
 describe 'Tetris::Gameboard' do
   it 'should exist' do

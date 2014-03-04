@@ -7,6 +7,9 @@ module Tetris
       @width  = width
       @well   = well || Array.new( height * width, 0 )
     end
+    
+    def drop!( piece, column )
+    end
 
     # ===== Row stuff:
   
