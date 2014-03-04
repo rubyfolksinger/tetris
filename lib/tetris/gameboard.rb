@@ -18,7 +18,7 @@ module Tetris
 
       piece.shape.each_slice( piece.width ).to_a.each_with_index do |shape_row, shape_row_index|
         shape_row.each_with_index do |shape_col, shape_column_index|
-          row_index = ( @height - drop_height - piece.height ) * @width + (@width * shape_row_index)
+          row_index = ( @height - drop_height - piece.height ) * @width + ( @width * shape_row_index )
           well_index = row_index + column_index + shape_column_index
           @well[ well_index ] = 1
         end
@@ -28,10 +28,10 @@ module Tetris
 
     # ===== Row stuff:
   
-    def row( row_index )
-      @well.each_slice( @width ).to_a[ row_index ]
+    def add_blank_row_to_top
+      @well = Array.new( @width, 0 ) + @well
     end
-  
+
     def clear_row!( row_index )
       @well.slice!( row_index * @width, @width )
       add_blank_row_to_top
@@ -41,12 +41,12 @@ module Tetris
       0.upto( @width ).select{|row_index| row_index if row_clearable?( row_index ) }
     end
 
+    def row( row_index )
+      @well.each_slice( @width ).to_a[ row_index ]
+    end
+  
     def row_clearable?( row_index )
       ! row( row_index ).include?( 0 )
-    end
-
-    def add_blank_row_to_top
-      @well = Array.new( @width, 0 ) + @well
     end
 
     # ===== Column stuff:
