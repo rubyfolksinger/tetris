@@ -26,17 +26,31 @@ describe 'Tetris::Gameboard' do
   end
 
   describe 'methods' do
+    before do
+      @gameboard = Tetris::Gameboard.new( 4, 3, [ 1,0,0,
+                                                  1,1,0,
+                                                  1,1,1,
+                                                  1,1,1 ] )
+    end
+
     # ===== Row stuff:
+
     describe '#row' do
       it 'should return the appropriate row based on index' do
-        gameboard = Tetris::Gameboard.new( 4, 3, [ 1,0,0,
-                                                   1,1,0,
-                                                   1,1,1,
-                                                   1,1,1 ] )
-        gameboard.row(0).should == [1,0,0]
-        gameboard.row(1).should == [1,1,0]
-        gameboard.row(2).should == [1,1,1]
-        gameboard.row(3).should == [1,1,1]
+        @gameboard.row(0).should == [1,0,0]
+        @gameboard.row(1).should == [1,1,0]
+        @gameboard.row(2).should == [1,1,1]
+        @gameboard.row(3).should == [1,1,1]
+      end
+    end
+
+    # ===== Column stuff:
+
+    describe '#column' do
+      it 'should return the appropriate column based on index' do
+        @gameboard.column(0).should == [1,1,1,1]
+        @gameboard.column(1).should == [0,1,1,1]
+        @gameboard.column(2).should == [0,0,1,1]
       end
     end
   end
