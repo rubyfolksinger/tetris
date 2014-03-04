@@ -157,6 +157,24 @@ describe 'Tetris::Gameboard' do
         end
       end
 
+      describe '#filled?' do
+        it 'should return true if any column is filled with blocks' do
+          gameboard = Tetris::Gameboard.new( 4, 4, [ 0,0,0,2,
+                                                     0,0,3,3,
+                                                     0,1,1,3,
+                                                     0,1,1,0 ] )
+          gameboard.filled?.should be_true
+        end
+
+        it 'should return false if a column has one or more spaces at the top' do
+          gameboard = Tetris::Gameboard.new( 4, 4, [ 0,0,0,0,
+                                                     0,0,3,3,
+                                                     0,1,1,3,
+                                                     0,1,1,3 ] )
+          gameboard.filled?.should be_false
+        end
+      end
+
       describe '#top_block' do
         it 'should return character used by the top block' do
           @gameboard.top_block( 0 ).should == nil

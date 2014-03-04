@@ -63,6 +63,10 @@ module Tetris
       ( column_index...( column_index + piece.width ) ).collect{|index| column_height( index ) }
     end
 
+    def filled?
+      0.upto( @width -1 ).any?{|column_index| column_height( column_index ) >= @height } 
+    end
+
     def top_block( column_index )
       column( column_index ).select{|c| c != 0 }.first
     end
