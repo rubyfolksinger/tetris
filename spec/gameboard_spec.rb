@@ -95,16 +95,16 @@ describe 'Tetris::Gameboard' do
     describe 'rows' do
       describe '#row' do
         it 'should return the appropriate row based on index' do
-          @gameboard.row( 0 ).should == [1,0,0]
-          @gameboard.row( 1 ).should == [1,1,0]
-          @gameboard.row( 2 ).should == [1,1,1]
-          @gameboard.row( 3 ).should == [1,1,1]
+          @gameboard.row( 0 ).should == [ 1,0,0 ]
+          @gameboard.row( 1 ).should == [ 1,1,0 ]
+          @gameboard.row( 2 ).should == [ 1,1,1 ]
+          @gameboard.row( 3 ).should == [ 1,1,1 ]
         end
       end
       
       describe '#clearable_rows' do
         it 'should return the row_index of clearable rows' do
-          @gameboard.clearable_rows.should == [2,3]
+          @gameboard.clearable_rows.should == [ 2,3 ]
         end
       end
       
@@ -123,18 +123,18 @@ describe 'Tetris::Gameboard' do
     
     describe 'columns' do
       before do
-        @gameboard = Tetris::Gameboard.new( 4, 4, [0,0,0,2,
-                                                   0,0,3,3,
-                                                   0,1,1,3,
-                                                   0,1,1,0] )
+        @gameboard = Tetris::Gameboard.new( 4, 4, [ 0,0,0,2,
+                                                    0,0,3,3,
+                                                    0,1,1,3,
+                                                    0,1,1,0 ] )
       end
 
       describe '#column' do
         it 'should return the specified column' do
-          @gameboard.column( 0 ).should == [0,0,0,0]
-          @gameboard.column( 1 ).should == [0,0,1,1]
-          @gameboard.column( 2 ).should == [0,3,1,1]
-          @gameboard.column( 3 ).should == [2,3,3,0]
+          @gameboard.column( 0 ).should == [ 0,0,0,0 ]
+          @gameboard.column( 1 ).should == [ 0,0,1,1 ]
+          @gameboard.column( 2 ).should == [ 0,3,1,1 ]
+          @gameboard.column( 3 ).should == [ 2,3,3,0 ]
         end
       end
 
@@ -149,11 +149,11 @@ describe 'Tetris::Gameboard' do
 
       describe '#columns_heights_beneath_piece' do
         it 'should return the height of blocks in the column' do
-          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [1,1,
-                                                                               1,1])
-          @gameboard.column_heights_beneath_piece( piece, 0 ).should == [0,2]
-          @gameboard.column_heights_beneath_piece( piece, 1 ).should == [2,3]
-          @gameboard.column_heights_beneath_piece( piece, 2 ).should == [3,4]
+          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
+                                                                                1,1 ] )
+          @gameboard.column_heights_beneath_piece( piece, 0 ).should == [ 0,2 ]
+          @gameboard.column_heights_beneath_piece( piece, 1 ).should == [ 2,3 ]
+          @gameboard.column_heights_beneath_piece( piece, 2 ).should == [ 3,4 ]
         end
       end
 
