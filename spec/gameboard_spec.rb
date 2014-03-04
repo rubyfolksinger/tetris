@@ -92,15 +92,35 @@ describe 'Tetris::Gameboard' do
 
     # ===== Row stuff:
 
-    describe '#row' do
-      it 'should return the appropriate row based on index' do
-        @gameboard.row( 0 ).should == [1,0,0]
-        @gameboard.row( 1 ).should == [1,1,0]
-        @gameboard.row( 2 ).should == [1,1,1]
-        @gameboard.row( 3 ).should == [1,1,1]
+    describe 'rows' do
+      describe '#row' do
+        it 'should return the appropriate row based on index' do
+          @gameboard.row( 0 ).should == [1,0,0]
+          @gameboard.row( 1 ).should == [1,1,0]
+          @gameboard.row( 2 ).should == [1,1,1]
+          @gameboard.row( 3 ).should == [1,1,1]
+        end
+      end
+      
+      describe '#clearable_rows' do
+        it 'should return the row_index of clearable rows' do
+          @gameboard.clearable_rows.should == [2,3]
+        end
+      end
+      
+      describe '#row_clearable?' do
+        it 'should return true if a row is filled' do
+          @gameboard.row_clearable?( 0 ).should be_false
+          @gameboard.row_clearable?( 1 ).should be_false
+        end
+
+        it 'should return false if a row has any holes' do
+          @gameboard.row_clearable?( 2 ).should be_true
+          @gameboard.row_clearable?( 3 ).should be_true
+        end
       end
     end
-
+    
     describe 'columns' do
       before do
         @gameboard = Tetris::Gameboard.new( 4, 4, [0,0,0,2,

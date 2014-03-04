@@ -37,10 +37,18 @@ module Tetris
       add_blank_row_to_top
     end
 
+    def clearable_rows
+      0.upto( @width ).select{|row_index| row_index if row_clearable?( row_index ) }
+    end
+
+    def row_clearable?( row_index )
+      ! row( row_index ).include?( 0 )
+    end
+
     def add_blank_row_to_top
       @well = Array.new( @width, 0 ) + @well
     end
-    
+
     # ===== Column stuff:
   
     def column( column_index )
