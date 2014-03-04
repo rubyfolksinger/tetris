@@ -8,7 +8,12 @@ module Tetris
       @well   = well || Array.new( height * width, 0 )
     end
     
-    def drop!( piece, column )
+    def drop!( piece, column_index )
+      # TODO: ensure piece is within well boundaries (doesn't spill off to the right)
+    end
+
+    def column_heights_beneath_piece( piece, column_index )
+      ( column_index...( column_index + piece.width ) ).collect{|index| column_height( index ) }
     end
 
     def column_height( column_index )

@@ -84,6 +84,16 @@ describe 'Tetris::Gameboard' do
         end
       end
 
+      describe '#columns_heights_beneath_piece' do
+        it 'should return the height of blocks in the column' do
+          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [1,1,
+                                                                               1,1])
+          @gameboard.column_heights_beneath_piece( piece, 0 ).should == [0,2]
+          @gameboard.column_heights_beneath_piece( piece, 1 ).should == [2,3]
+          @gameboard.column_heights_beneath_piece( piece, 2 ).should == [3,4]
+        end
+      end
+
       describe '#top_block' do
         it 'should return character used by the top block' do
           @gameboard.top_block( 0 ).should == nil
