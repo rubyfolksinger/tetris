@@ -24,4 +24,20 @@ describe 'Tetris::Gameboard' do
       @gameboard.well.size.should == @height * @width
     end
   end
+
+  describe 'methods' do
+    # ===== Row stuff:
+    describe '#row' do
+      it 'should return the appropriate row based on index' do
+        gameboard = Tetris::Gameboard.new( 4, 3, [ 1,0,0,
+                                                   1,1,0,
+                                                   1,1,1,
+                                                   1,1,1 ] )
+        gameboard.row(0).should == [1,0,0]
+        gameboard.row(1).should == [1,1,0]
+        gameboard.row(2).should == [1,1,1]
+        gameboard.row(3).should == [1,1,1]
+      end
+    end
+  end
 end

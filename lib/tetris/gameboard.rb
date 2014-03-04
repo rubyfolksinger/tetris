@@ -7,5 +7,11 @@ module Tetris
       @width  = width
       @well   = well || Array.new( height * width, 0 )
     end
+
+    # ===== Row stuff:
+  
+    def row( row_index )
+      @well.each_slice( @width ).to_a[ row_index ]
+    end
   end
 end
