@@ -34,16 +34,49 @@ describe 'Tetris::Gameboard' do
     end
 
     describe '#drop!' do
+      before do
+        @piece = Tetris::Tetrimino.new( :height => 2,
+                                        :width  => 2,
+                                        :shape => [ 1,1,
+                                                    1,1 ] )
+      end
+      
       it 'should place the piece in the specified column' do
-        pending
+        @gameboard = Tetris::Gameboard.new( 3, 3, [ 0,0,0,
+                                                    0,0,0,
+                                                    0,0,0 ] )
+        @gameboard.drop!( @piece, 1 )
+        @gameboard.well.should == [ 0,0,0,
+                                    0,1,1,
+                                    0,1,1 ]
       end
 
       it 'should place the piece atop other pieces in the specified column' do
-        pending
+        @gameboard = Tetris::Gameboard.new( 3, 3, [ 0,0,0,
+                                                    0,0,0,
+                                                    2,2,2 ] )
+        @gameboard.drop!( @piece, 1 )
+        @gameboard.well.should == [ 0,1,1,
+                                    0,1,1,
+                                    2,2,2 ]
       end
 
-      it 'should place the piece at the correct height if the piece should rest atop pieces in other columns' do
-        pending
+      it 'should create a hole when hanging over a space' do
+        @gameboard = Tetris::Gameboard.new( 3, 3, [ 0,0,0,
+                                                    0,0,0,
+                                                    2,0,2 ] )
+        @gameboard.drop!( @piece, 0 )
+        @gameboard.well.should == [ 1,1,0,
+                                    1,1,0,
+                                    2,0,2 ]
+      end
+      
+      it 'should raise an error if the piece is too wide for the column (would extend over the edge of the board)' do
+        expect { @gameboard.drop!( @piece, 999 )}.to raise_error
+      end
+
+      it 'should raise an error if the piece if a negative index is passed' do
+        expect { @gameboard.drop!( @piece, -1 )}.to raise_error
       end
     end
 
