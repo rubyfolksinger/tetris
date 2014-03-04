@@ -85,7 +85,7 @@ describe 'Tetris::Gameboard' do
         expect { @gameboard.drop!( @piece, 999 )}.to raise_error
       end
 
-      it 'should raise an error if the piece if a negative index is passed' do
+      it 'should raise an error if a negative index is passed' do
         expect { @gameboard.drop!( @piece, -1 )}.to raise_error
       end
     end
