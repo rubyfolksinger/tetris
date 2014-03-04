@@ -33,6 +33,16 @@ describe 'Tetris::Gameboard' do
                                                   1,1,1 ] )
     end
 
+    describe '#clear_row!' do
+      it 'should clear the specified row' do
+        @gameboard.clear_row!(3)
+        @gameboard.well.should == [ 0,0,0,
+                                    1,0,0,
+                                    1,1,0,
+                                    1,1,1 ]
+      end
+    end
+
     describe '#drop!' do
       before do
         @piece = Tetris::Tetrimino.new( :height => 2,

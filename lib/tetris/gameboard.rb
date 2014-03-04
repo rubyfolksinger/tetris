@@ -31,6 +31,15 @@ module Tetris
     def row( row_index )
       @well.each_slice( @width ).to_a[ row_index ]
     end
+  
+    def clear_row!( row_index )
+      @well.slice!( row_index * @width, @width )
+      add_blank_row_to_top
+    end
+
+    def add_blank_row_to_top
+      @well = Array.new( @width, 0 ) + @well
+    end
     
     # ===== Column stuff:
   
