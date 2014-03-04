@@ -11,6 +11,18 @@ module Tetris
     def drop!( piece, column )
     end
 
+    def column_height( column_index )
+      top_block_position( column_index ) ? @height - top_block_position( column_index ) : 0
+    end
+
+    def top_block( column_index )
+      column( column_index ).select{|c| c != 0 }.first
+    end
+
+    def top_block_position( column_index )
+      column( column_index ).index( top_block( column_index ) )
+    end
+
     # ===== Row stuff:
   
     def row( row_index )
