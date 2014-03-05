@@ -145,6 +145,14 @@ describe 'Tetris::Gameboard' do
                                                     0,1,1,0 ] )
       end
 
+      describe '#all_column_heights' do
+        it 'should return the max column height beneath a piece for all columns' do
+          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
+                                                                                1,1 ] )
+          @gameboard.all_column_heights( piece ).should == [ 0,2,3,4 ]
+        end
+      end
+
       describe '#column' do
         it 'should return the specified column' do
           @gameboard.column( 0 ).should == [ 0,0,0,0 ]
@@ -163,8 +171,8 @@ describe 'Tetris::Gameboard' do
         end
       end
 
-      describe '#columns_heights_beneath_piece' do
-        it 'should return the height of blocks in the column' do
+      describe '#column_heights_beneath_piece' do
+        it 'should return the height of all columns beneath a piece' do
           piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
                                                                                 1,1 ] )
           @gameboard.column_heights_beneath_piece( piece, 0 ).should == [ 0,2 ]
