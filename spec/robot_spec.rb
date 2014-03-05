@@ -27,8 +27,7 @@ describe 'Tetris::Robot' do
     end
 
     it 'should choose the fifth column if two 2x2 blocks are in the bottom left' do
-      @gameboard.drop!( @piece, 0 )
-      @gameboard.drop!( @piece, 2 )
+      [0,2].each{|position|  @gameboard.drop!( @piece, positiona ) }
       Tetris::Robot.decide( @gameboard, @piece ).should == 4
     end
     
