@@ -33,10 +33,13 @@ describe 'Tetris::Robot' do
     end
     
     it 'should choose the sixth column if two 2x2 blocks with a space in-between them are in the bottom left' do
-      pending
-      # @gameboard.drop!( @piece, 0 )
-      # @gameboard.drop!( @piece, 3 )
-      # Tetris::Robot.decide( @gameboard, @piece ).should == 5
+      [0,3].each{|position|  @gameboard.drop!( @piece, positiona ) }
+      Tetris::Robot.decide( @gameboard, @piece ).should == 5
+    end
+
+    it 'should choose the first column if the bottom row is filled aside from 1-wide gaps' do
+      [0,2,4,7].each{|position|  @gameboard.drop!( @piece, position ) }
+      Tetris::Robot.decide( @gameboard, @piece ).should == 0
     end
   end
 end

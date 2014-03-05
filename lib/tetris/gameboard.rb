@@ -68,7 +68,7 @@ module Tetris
     end
     
     def all_column_heights_beneath_piece( piece )
-      ( 0..( piece.width ) ).collect{|index| column_heights_beneath_piece( piece, index ).max }
+      ( 0..( @width - piece.width ) ).collect{|index| column_heights_beneath_piece( piece, index ).max }
     end
 
     def all_column_heights
