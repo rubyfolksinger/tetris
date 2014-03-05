@@ -43,6 +43,16 @@ describe 'Tetris::Gameboard' do
       end
     end
 
+    describe '#clear_rows!' do
+      it 'should clear all clearable rows' do
+        @gameboard.clear_rows!
+        @gameboard.well.should == [ 0,0,0,
+                                    0,0,0,
+                                    1,0,0,
+                                    1,1,0 ]
+      end
+    end
+
     describe '#drop!' do
       before do
         @piece = Tetris::Tetrimino.new( :height => 2,
@@ -102,9 +112,15 @@ describe 'Tetris::Gameboard' do
         end
       end
       
+
       describe '#clearable_rows' do
         it 'should return the row_index of clearable rows' do
           @gameboard.clearable_rows.should == [ 2,3 ]
+        end
+
+        it 'should return an empty array if no rows are clearable' do
+          [2,3].each{|row_index| @gameboard.clear_row!( row_index ) }
+          @gameboard.clearable_rows.should == []
         end
       end
       

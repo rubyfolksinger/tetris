@@ -37,6 +37,10 @@ module Tetris
       add_blank_row_to_top
     end
 
+    def clear_rows!
+      clearable_rows.each{|row_index| clear_row!( row_index ) }
+    end
+
     def clearable_rows
       0.upto( @width ).select{|row_index| row_index if row_clearable?( row_index ) }
     end
