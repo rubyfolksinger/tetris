@@ -149,7 +149,7 @@ describe 'Tetris::Gameboard' do
         it 'should return the max column height beneath a piece for all columns' do
           piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
                                                                                 1,1 ] )
-          @gameboard.all_column_heights( piece ).should == [ 0,2,3,4 ]
+          @gameboard.all_column_heights.should == [ 0,2,3,4 ]
         end
       end
 
