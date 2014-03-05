@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe 'Tetris::Robot' do
   it 'should exist' do
@@ -10,7 +11,7 @@ describe 'Tetris::Robot' do
       @gameboard = Tetris::Gameboard.new( 20, 10 )
       @attributes = {
         :height    => 2,
-        :width     => 3,
+        :width     => 2,
         :shape     => [ 1,1,
                         1,1 ]
       }
@@ -23,19 +24,20 @@ describe 'Tetris::Robot' do
 
     it 'should choose the third column if a 2x2 block is in the bottom left' do
       @gameboard.drop!( @piece, 0 )
-      Tetris::Robot.decide( @gameboard, @piece ).should == 3
+      Tetris::Robot.decide( @gameboard, @piece ).should == 2
     end
 
     it 'should choose the fifth column if two 2x2 blocks are in the bottom left' do
       @gameboard.drop!( @piece, 0 )
       @gameboard.drop!( @piece, 2 )
-      Tetris::Robot.decide( @gameboard, @piece ).should == 5
+      Tetris::Robot.decide( @gameboard, @piece ).should == 4
     end
-
+    
     it 'should choose the sixth column if two 2x2 blocks with a space in-between them are in the bottom left' do
-      @gameboard.drop!( @piece, 0 )
-      @gameboard.drop!( @piece, 3 )
-      Tetris::Robot.decide( @gameboard, @piece ).should == 6
+      pending
+      # @gameboard.drop!( @piece, 0 )
+      # @gameboard.drop!( @piece, 3 )
+      # Tetris::Robot.decide( @gameboard, @piece ).should == 5
     end
   end
 end
