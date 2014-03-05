@@ -3,7 +3,7 @@ module Tetris
     attr_accessor :height, :width, :shape
 
     SHAPES = [ 
-               { :height => 2, :width => 2, :shape => [ 1,1,1,1] }
+               { :height => 2, :width => 2, :shape => [ 1,1,1,1 ] }
              ]
 
     def initialize( options )

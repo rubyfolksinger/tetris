@@ -7,5 +7,20 @@ module Tetris
       @current_piece = Tetris::Tetrimino.sample
       @next_piece    = Tetris::Tetrimino.sample
     end
+
+    def play
+      # until game_over do
+      #   robo_player_turn
+      #   @current_piece = @next_piece
+      #   @next_piece    = Tetris::Tetrimino.sample
+      #   @gameboard.clear_rows!
+      #   game_over = true if @gameboard.filled?
+      # end
+    end
+
+    def robo_player_turn
+      @gameboard.drop!( @current_piece, Robot.decide( @gameboard, @current_piece ) )
+    end
+    
   end
 end
