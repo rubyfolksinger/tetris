@@ -27,12 +27,12 @@ describe 'Tetris::Robot' do
     end
 
     it 'should choose the fifth column if two 2x2 blocks are in the bottom left' do
-      [0,2].each{|position|  @gameboard.drop!( @piece, positiona ) }
+      [0,2].each{|position|  @gameboard.drop!( @piece, position ) }
       Tetris::Robot.decide( @gameboard, @piece ).should == 4
     end
     
     it 'should choose the sixth column if two 2x2 blocks with a space in-between them are in the bottom left' do
-      [0,3].each{|position|  @gameboard.drop!( @piece, positiona ) }
+      [0,3].each{|position|  @gameboard.drop!( @piece, position ) }
       Tetris::Robot.decide( @gameboard, @piece ).should == 5
     end
 

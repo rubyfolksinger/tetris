@@ -55,8 +55,12 @@ module Tetris
 
     # ===== Column stuff:
   
+    def columns
+      @well.each_slice( @width ).to_a
+    end
+  
     def column( column_index )
-      @well.each_slice( @width ).collect{|r| r[ column_index ] }
+      columns.collect{|r| r[ column_index ] }
     end
 
     def column_height( column_index )
