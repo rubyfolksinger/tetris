@@ -1,4 +1,4 @@
-  require 'spec_helper'
+require 'spec_helper'
 
 describe 'Tetris::Gameboard' do
   it 'should exist' do
@@ -55,10 +55,8 @@ describe 'Tetris::Gameboard' do
 
     describe '#drop!' do
       before do
-        @piece = Tetris::Tetrimino.new( :height => 2,
-                                        :width  => 2,
-                                        :shape => [ 1,1,
-                                                    1,1 ] )
+        @piece = Tetris::Tetrimino.new( height: 2, width: 2, shape: [ 1,1,
+                                                                      1,1 ] )
       end
       
       it 'should place the piece in the specified column' do
@@ -147,8 +145,8 @@ describe 'Tetris::Gameboard' do
 
       describe '#all_column_heights' do
         it 'should return the max column height beneath a piece for all columns' do
-          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
-                                                                                1,1 ] )
+          piece = Tetris::Tetrimino.new( height:2, width:2, shape:[ 1,1,
+                                                                    1,1 ] )
           @gameboard.all_column_heights.should == [ 0,2,3,4 ]
         end
       end
@@ -173,8 +171,8 @@ describe 'Tetris::Gameboard' do
 
       describe '#column_heights_beneath_piece' do
         it 'should return the height of all columns beneath a piece' do
-          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
-                                                                                1,1 ] )
+          piece = Tetris::Tetrimino.new( height: 2, width: 2, shape: [ 1,1,
+                                                                       1,1 ] )
           @gameboard.column_heights_beneath_piece( piece, 0 ).should == [ 0,2 ]
           @gameboard.column_heights_beneath_piece( piece, 1 ).should == [ 2,3 ]
           @gameboard.column_heights_beneath_piece( piece, 2 ).should == [ 3,4 ]
@@ -183,8 +181,8 @@ describe 'Tetris::Gameboard' do
       
       describe '#all_column_heights_beneath_piece' do
         it 'should return the column height at which the piece will be placed if dropped for all valid columns' do
-          piece = Tetris::Tetrimino.new( :height => 2, :width => 2, :shape => [ 1,1,
-                                                                                1,1 ] )
+          piece = Tetris::Tetrimino.new( height: 2, width: 2, shape: [ 1,1,
+                                                                       1,1 ] )
           @gameboard.all_column_heights_beneath_piece( piece ).should == [ 2,3,4 ]
         end
       end

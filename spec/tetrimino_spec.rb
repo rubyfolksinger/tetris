@@ -8,10 +8,10 @@ describe 'Tetris::Tetrimino' do
   describe 'attributes' do
     before do
       @attributes = {
-        :height    => 2,
-        :width     => 3,
-        :shape     => [0,1,0,
-                       1,1,1]
+        :height => 2,
+        :width  => 3,
+        :shape  => [ 0,1,0,
+                     1,1,1 ]
       }
       @tetrimino = Tetris::Tetrimino.new( @attributes )
     end

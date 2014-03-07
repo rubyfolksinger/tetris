@@ -42,7 +42,7 @@ module Tetris
     end
 
     def clearable_rows
-      0.upto( @width ).select{|row_index| row_index if row_clearable?( row_index ) }
+      0.upto( @height - 1 ).select{|row_index| row_index if row_clearable?( row_index ) }
     end
 
     def row( row_index )
